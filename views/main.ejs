@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/main.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- 경고창 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+    <title>BEARCRAFT SHOP</title>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <div class="header">
+      <div class="logoImg">
+        <div>
+          <img src="/image/bearLogo.png" />
+        </div>
+      </div>
+      <div class="icon">
+        <img src="/image/personIcon.png" alt="login icon" />
+        <img
+          class="favoriteIcon"
+          src="/image/favoriteBlack.png"
+          alt="favorite icon"
+        />
+        <img src="/image/shoppingIcon.png" alt="shopping icon" />
+      </div>
+    </div>
+
+    <!-- 등록 폼 -->
+    <form
+      action="/upload"
+      method="post"
+      id="uploadFile"
+      enctype="multipart/form-data"
+    >
+      <div class="inputs">
+        <input type="number" id="id" placeholder="아이디를 입력해 주세요." />
+        <div id="idAlert"></div>
+
+        <input id="name" placeholder="상품 이름을 입력해 주세요." />
+        <div id="nameAlert"></div>
+
+        <input type="number" id="price" placeholder="가격을 입력해 주세요." />
+        <div id="priceAlert"></div>
+
+        <input id="detail" placeholder="상세를 입력해 주세요." />
+        <div id="detailAlert"></div>
+
+        <input type="file" id="img" name="files" /><br />
+
+        <button type="submit" id="btnSelect" disabled="true">저장</button>
+      </div>
+    </form>
+
+    <div class="download">
+      <div id="excelDownload">엑셀 다운로드</div>
+    </div>
+
+    <div class="mainContainer"></div>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>
