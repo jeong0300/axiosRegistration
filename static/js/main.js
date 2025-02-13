@@ -20,6 +20,7 @@ const id = document.getElementById("id");
 const name = document.getElementById("name");
 const price = document.getElementById("price");
 const detail = document.getElementById("detail");
+const img = document.getElementById("img");
 // radio 값 (추적)
 let selectedValue = "color";
 document.querySelectorAll('input[name="category"]').forEach((radio) => {
@@ -260,21 +261,21 @@ document
 
     const formData = new FormData(this);
 
-    formData.append;
-
-    console.log(formData); // 이미지만 들어있음.
+    formData.append("id", id.value);
+    formData.append("name", name.value);
+    formData.append("price", price.value);
+    formData.append("detail", detail.value);
 
     try {
-      // 서버로 데이터 전송 및 파일 업로드 대기
+      // 동기식으로 답장올 때까지 기다림
       const response = await axios.post("/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      // 업로드 완료 후 로컬 스토리지에 저장
+      // 답장 온 데이터를 로컬 스토리지에 넣음
       saveData.push(response.data);
       window.localStorage.setItem("saveData", JSON.stringify(saveData));
 
-      // 새로운 테이블 데이터 생성
       const tbody = document.createElement("tbody");
 
       const priceFin = Number(response.data.price).toLocaleString();
@@ -292,7 +293,6 @@ document
         </td>
       </tr>`;
 
-      // 테이블에 새로운 데이터 추가
       table.appendChild(tbody);
 
       // 초기화
@@ -300,6 +300,7 @@ document
       name.value = "";
       price.value = "";
       detail.value = "";
+      img.value = "";
 
       idAlert.innerText = "";
       nameAlert.innerText = "";
