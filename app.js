@@ -39,6 +39,20 @@ app.get("/axiosget", (req, res) => {
   res.send(req.query);
 });
 
+app.post("/axiospost", (req, res) => {
+  let id = req.body.id;
+  let storedId = req.body.storedId;
+  let num;
+
+  if (storedId.includes(id)) {
+    num = 200;
+  } else {
+    num = 300;
+  }
+
+  res.send({ status: num });
+});
+
 app.post("/upload", upload.single("files"), (req, res) => {
   res.json({
     img: `/uploads/${req.file.filename}`,

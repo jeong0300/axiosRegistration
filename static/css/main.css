@@ -176,6 +176,41 @@ td #alret {
   font-size: 13px;
 }
 
+.flex {
+  display: flex;
+  top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
+}
+
+.flex input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.flex #btn {
+  padding: 10px 15px;
+  margin-top: 1px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #6e8fb1;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.flex #btn:hover {
+  background-color: #5a7c9b;
+}
+
 /* 수정 버튼 스타일 */
 table button:first-child {
   background-color: #ffcf40;
@@ -190,6 +225,20 @@ table button:first-child:disabled {
 
 table button:first-child:hover:enabled {
   background-color: #e0a800;
+}
+
+.red {
+  color: red;
+  margin-top: 10px;
+}
+
+.green {
+  color: green;
+  margin-top: 10px;
+}
+
+#idAlert {
+  margin-bottom: 10px;
 }
 
 /* 삭제 버튼 스타일 */

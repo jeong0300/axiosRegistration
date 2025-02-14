@@ -36,7 +36,7 @@ const detailAlert = document.getElementById("detailAlert");
 // button
 const btn = document.getElementById("btnSelect");
 // 버튼 활성화
-let idComplete = false;
+// let idComplete = false;
 let nameComplete = false;
 let priceComplete = false;
 let detailComplete = false;
@@ -49,7 +49,7 @@ let saveData = JSON.parse(window.localStorage.getItem("saveData")) || [];
 
 // 저장 버튼 활성화
 function complete() {
-  if (idComplete && nameComplete && priceComplete && detailComplete) {
+  if (nameComplete && priceComplete && detailComplete) {
     btn.disabled = false;
   } else {
     btn.disabled = true;
@@ -70,30 +70,32 @@ function com(userId) {
 }
 
 // input 실시간 감지
-id.addEventListener("input", function () {
-  let userInfo = {
+function check() {
+  const storedId = saveData.map((user) => user.id);
+
+  console.log("스토리지 아이디 :", storedId);
+
+  const data = {
     id: id.value,
-    name: name.value,
-    price: price.value,
-    detail: detail.value,
+    storedId: storedId,
   };
 
-  const idRepeat = saveData.filter((user) => user.id === userInfo.id);
-
-  if (idRepeat.length === 1) {
-    idAlert.innerText = "중복된 아이디입니다.";
-    idComplete = false;
-    complete();
-  } else if (id.value.length === 0) {
-    idAlert.innerText = "아이디를 작성하여주세요.";
-    idComplete = false;
-    complete();
-  } else {
-    idAlert.innerText = "";
-    idComplete = true;
-    complete();
-  }
-});
+  axios
+    .post("/axiospost", data)
+    .then((res) => {
+      console.log(res);
+      if (res.data.status === 200) {
+        idAlert.innerHTML =
+          "<h5 class='red'> 중복되는 아이디입니다. </h5><br/>";
+      } else {
+        idAlert.innerHTML =
+          "<h5 class='green'> 사용 가능한 아이디입니다. </h5><br/>";
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
 
 name.addEventListener("input", function () {
   if (name.value.length === 0) {

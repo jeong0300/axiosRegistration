@@ -40,7 +40,10 @@
       enctype="multipart/form-data"
     >
       <div class="inputs">
-        <input type="number" id="id" placeholder="아이디를 입력해 주세요." />
+        <div class="flex">
+          <input type="number" id="id" placeholder="아이디를 입력해 주세요." />
+          <div id="btn" onclick="check()">중복 체크</div>
+        </div>
         <div id="idAlert"></div>
 
         <input id="name" placeholder="상품 이름을 입력해 주세요." />
